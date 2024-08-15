@@ -474,3 +474,59 @@ function Producto(nombre, stock) {
     }
 }
 
+
+function ejercicio24() {
+    console.log("Ejercicio Nro 24");
+    console.log("24. Crear una función `ordenarNumeros` que tome un array de números como");
+    console.log("parámetro y retorne un nuevo array con los números ordenados de menor a mayor.");
+
+}
+
+
+function ejercicio25() {
+    console.log("Ejercicio Nro 25");
+    console.log("25. Crear una función `eliminarEstudiante` que tome un array de estudiantes");
+    console.log("y un nombre, y retorne un nuevo array sin el estudiante con ese nombre");
+    
+}
+
+
+function ejercicio26() {
+    console.log("Ejercicio Nro 26");
+    console.log("26. Crear una función `totalCarrito` que tome un array de productos");
+    console.log("y retorne el precio total de los productos.");
+    
+}
+
+
+function ejercicio27() {
+    console.log("Ejercicio Nro 27");
+    console.log("27. Crear una función `crearCalculadora` que retorne un objeto con ");
+    console.log("métodos `sumar`, `restar`, `multiplicar` y `dividir`.");
+
+}
+
+
+function ejercicio28() {
+    console.log("Ejercicio Nro 28");
+    console.log("28. Crear una función `crearCuentaBancaria` que retorne un objeto ");
+    console.log("con métodos `depositar`, `retirar` y `saldo`");
+
+}
+
+
+function ejercicio29() {
+    console.log("Ejercicio Nro 29");
+    console.log("29. Crear un constructor `Libro` con propiedades `titulo`, `autor` ");
+    console.log("y `paginas`, y un método `detalles` que imprima la información del libro.");
+
+}
+
+
+function ejercicio30() {
+    console.log("Ejercicio Nro 30");
+    console.log("30. Crear un programa que simule una lista de tareas (`to-do list`)");
+    console.log("utilizando objetos y arrays. Debe permitir agregar tareas, marcar tareas");
+    console.log("como completadas y listar las tareas pendientes");
+
+}
