@@ -266,7 +266,23 @@ function obtenerInfoPersona(persona) {
 
 function ejercicio15() {
     console.log("Ejercicio Nro 15");
-    
+    console.log("15. Crear una función `duplicarArray` que tome un array de números como parámetro");
+    console.log("y retorne un nuevo array con cada elemento duplicado.");
+
+    const arregloNumerico = [12, 5, 8, 21, 34, 7, 18, 29, 42];
+    const arregloNumericoDuplicado = duplicarArregloNumerico(arregloNumerico);
+
+    console.log("Arreglo sin duplicar: " + arregloNumerico);
+    console.log("Arreglo duplicado: " + arregloNumericoDuplicado);
+}
+
+function duplicarArregloNumerico(arregloNumerico) {
+    const arregloNumericoDuplicado = [];
+    for ( let numero of arregloNumerico ) {
+        arregloNumericoDuplicado.push(numero);
+        arregloNumericoDuplicado.push(numero);
+    }
+    return arregloNumericoDuplicado;
 }
 
 
