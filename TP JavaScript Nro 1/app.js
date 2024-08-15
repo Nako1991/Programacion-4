@@ -288,11 +288,189 @@ function duplicarArregloNumerico(arregloNumerico) {
 
 function ejercicio16() {
     console.log("Ejercicio Nro 16");
+    console.log("16. Crear una función `invertirString` que tome una string como parámetro");
+    console.log("y retorne la cadena invertida");
+    
+    const string = new String("Esta frase se va a invertir.");
+    let stringInvertida = new String("");
+    for ( let caracter of string ) {
+        stringInvertida = insertarCaracterAlComienzo(caracter, stringInvertida);
+    }
 
+    console.log(`String: ${string}`);
+    console.log(`String: ${stringInvertida}`);
+}
+
+function insertarCaracterAlComienzo(caracter, string) {
+    return caracter + string;
 }
 
 
 function ejercicio17() {
     console.log("Ejercicio Nro 17");
+    console.log("17. Crear una función `filtrarPorLongitud` que tome un array de palabras");
+    console.log("y un número como parámetro, y retorne un nuevo array con, las palabras");
+    console.log("que tienen una longitud mayor al número.");
 
+    const arregloDePalabras = ["ser", "importante", "haber", "estar", "necesario", "tener", "diferente",
+        "hacer", "poder", "decir", "relaciones", "ir", "ver","oportunidad", "dar"];
+    const longitudPalabra = 5;
+    const arregloFiltrado = filtrarPorLongitud(arregloDePalabras, longitudPalabra);
+
+    console.log(arregloDePalabras);
+    console.log(arregloFiltrado);
 }
+
+function filtrarPorLongitud(arregloDePalabras, longitudMinima) {
+    let arregloFiltrado = [];
+    for ( let palabra of arregloDePalabras ) {
+        const stringPalabra = new String(palabra);
+        if( longitudMinima < stringPalabra.length )
+            arregloFiltrado.push(palabra);
+    }
+    return arregloFiltrado;
+}
+
+
+function ejercicio18() {
+    console.log("Ejercicio Nro 18");
+    console.log("18. Crear un array de objetos `estudiantes`, donde cada objeto tenga propiedades");
+    console.log("como `nombre`, `edad` y `promedio`.");
+
+    const arregloDeEstudiantes = crearArregloDeEstudiantes();
+    arregloDeEstudiantes.mostrar();
+}
+
+function crearArregloDeEstudiantes() {
+    const arregloDeEstudiantes = [];
+    arregloDeEstudiantes.push(new Estudiante("Laura", 20, 8.7));
+    arregloDeEstudiantes.push(new Estudiante("Carlos", 22, 9.1));
+    arregloDeEstudiantes.push(new Estudiante("Ana", 19, 8.4));
+    arregloDeEstudiantes.push(new Estudiante("Pedro", 21, 7.9));
+    arregloDeEstudiantes.push(new Estudiante("Maria", 23, 9.3));
+    return arregloDeEstudiantes;
+}
+
+function Estudiante(nombre, edad, promedio) {
+    this.nombre = nombre;
+    this.edad = edad;
+    this.promedio = promedio;
+    this.mostrar = function () {
+        console.log("Estudiante:");
+        console.log("  Nombre: " + this.nombre);
+        console.log("  Edad: " + this.edad);
+        console.log("  Promedio: " + this.promedio);
+    }
+}
+
+function ejercicio19() {
+    console.log("Ejercicio Nro 19");
+    console.log("19. Crear una función `buscarEstudiante` que tome un array de estudiantes y un");
+    console.log("nombre, y retorne el objeto del estudiante con ese nombre.");
+
+    const arregloDeEstudiantes = [];
+    arregloDeEstudiantes.push(new Estudiante("Laura", 20, 8.7));
+    arregloDeEstudiantes.push(new Estudiante("Carlos", 22, 9.1));
+    arregloDeEstudiantes.push(new Estudiante("Ana", 19, 8.4));
+    arregloDeEstudiantes.push(new Estudiante("Pedro", 21, 7.9));
+    arregloDeEstudiantes.push(new Estudiante("Maria", 23, 9.3));
+
+    for ( let estudiante of arregloDeEstudiantes )
+        console.log(estudiante);
+}
+
+
+function ejercicio20() {
+    console.log("Ejercicio Nro 20");
+    console.log("20. Crear una función `promedioClase` que tome el array de estudiantes ");
+    console.log("y retorne el promedio de sus promedios");
+
+    const arregloDeEstudiantes = crearArregloDeEstudiantes();
+    console.log("Promedio de la clase: " + calcularPromedioClase(arregloDeEstudiantes));
+}
+
+function calcularPromedioClase(arregloDeEstudiantes) {
+    let sumaPromedioEstudiante = 0;
+    let promedioClase = 0.0;
+    let cantidadEstudiantes = 0;
+    for ( let estudiante of arregloDeEstudiantes ) {
+        sumaPromedioEstudiante = sumaPromedioEstudiante + estudiante.promedio;
+        cantidadEstudiantes++;
+    }
+    return sumaPromedioEstudiante / cantidadEstudiantes;
+}
+
+
+function ejercicio21() {
+    console.log("Ejercicio Nro 21");
+    console.log("21. Crear un objeto `coche` con propiedades como `marca`, `modelo` y `anio`,");
+    console.log("y métodos como `arrancar` y `detener`.");
+
+    const moto = new Coche("Honda", "cb 190 r", 2017);
+    console.log(moto);
+}
+
+function Coche(marca, modelo, anio) {
+    this.marca = marca;
+    this.modelo = modelo;
+    this.anio = anio;
+    this.arrancar = function () {
+        console.log("Arrancando el vehiculo...");
+    }
+    this.detener = function () {
+        console.log("Arrancando el vehiculo...");
+    }
+}
+
+function ejercicio22() {
+    console.log("Ejercicio Nro 22");
+    console.log("22. Crear un constructor `Persona` con propiedades `nombre` y `edad`, ");
+    console.log("y un método `saludar` que imprima un saludo personalizado.");
+    
+    const persona1 = new Persona("Miguel", 37);
+    persona1.saludar();
+}
+
+function Persona(nombre, edad) {
+    this.nombre = nombre;
+    this.edad = edad;
+    this.saludar = function () {
+        console.log("Hola, " + this.nombre)
+    }
+}
+
+function ejercicio23() {
+    console.log("Ejercicio Nro 23");
+    console.log("23. Crear un método `agregarProducto` a la función constructora");
+    console.log("`Carrito` que agregue un producto al carrito.");
+
+    const carrito = new Carrito();
+    const producto1 = (new Producto("Monitor", 4));
+    const producto2 = (new Producto("Teclado", 8));
+    const producto3 = (new Producto("Mouse", 11));
+    carrito.agregarProducto(producto1);
+    carrito.agregarProducto(producto2);
+    carrito.agregarProducto(producto3);
+    console.log("Productos en el carrito: ");
+    for ( let producto of carrito.arregloDeProductos ) {
+        producto.mostrar();
+    }
+}
+
+function Carrito() {
+    this.arregloDeProductos = [];
+    this.agregarProducto = function (producto) {
+        this.arregloDeProductos.push(producto);
+    }
+}
+
+function Producto(nombre, stock) {
+    this.nombre = nombre;
+    this.stock = stock;
+    this.mostrar = function () {
+        console.log("Producto:");
+        console.log("  Nombre: " + this.nombre);
+        console.log("  Stock: " + this.stock);
+    }
+}
+
