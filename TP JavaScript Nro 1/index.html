@@ -8,6 +8,9 @@
         .button-fila {
             margin-bottom: 2em;
         }
+        .menu-desplegable {
+            display: none;
+        }
     </style>
 </head> 
 <body>
@@ -85,6 +88,14 @@
     <h2>Proyecto Final: Manejo de Datos</h2>
     <div class="button-fila">
         <button onclick="ejercicio30()">Ejercicio 30</button>
+    </div>
+
+    <div id="listaDeTareas" class="menu-desplegable">
+        <h2>Proyecto Final: Manejo de Datos</h2>
+        <h2>Bienvenido al programa de administracion de tareas.</h2>
+        <h2>Que tarea desea realizar?</h2>
+        <p id="Menu: "></p>
+        <button onclick="tareas.listarTareasPendientes()">Tareas Pendientes</button>
     </div>
 
     <script src="app.js"></script>

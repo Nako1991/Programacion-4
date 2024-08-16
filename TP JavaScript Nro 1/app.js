@@ -567,19 +567,19 @@ function ejercicio27() {
 
 function Calculadora() {
     this.sumar = function (num1, num2) {
-        return new Number(num1 + num2);
+        return new Number(num1) + new Number(num2);
     }
     this.restar = function (num1, num2) {
-        return new Number(num1 - num2);
+        return new Number(num1) - new Number(num2);
     }
     this.multiplicar = function (num1, num2) {
-        return new Number(num1 * num2);
+        return new Number(num1) * new Number(num2);
     }
     this.dividir = function (num1, num2) {
         if ( num2 == 0 )
             return "No se puede dividir por 0.";
         else
-            return new Number(num1 / num2);
+            return new Number(num1) / new Number(num2);
     }
 }
 
@@ -591,11 +591,17 @@ function ejercicio28() {
     
     const cuentaBancaria = new CuentaBancaria("Olmos Fernando", 15322.14);
     console.log(cuentaBancaria.mostrar());
+    console.log("Depositando 1500.50 en la cuenta.");
+    cuentaBancaria.depositar(1500.50);
+    console.log(cuentaBancaria.mostrar());
+    console.log("Retirando 5000.21 en la cuenta.");
+    cuentaBancaria.retirar(5000.21);
+    console.log(cuentaBancaria.mostrar());
 }
 
 function CuentaBancaria(titular, saldo) {
-    this.titular;
-    this.saldo;
+    this.titular = titular;
+    this.saldo = saldo;
     this.depositar = function (deposito) {
         this.saldo = this.saldo + deposito;
     }
@@ -614,13 +620,90 @@ function ejercicio29() {
     console.log("29. Crear un constructor `Libro` con propiedades `titulo`, `autor` ");
     console.log("y `paginas`, y un método `detalles` que imprima la información del libro.");
 
+    const libro1 = new Libro("Libro de ejemplo", "Autor de ejemplo", 376);
+    libro1.mostrar();
+}
+
+function Libro(titulo, autor, paginas) {
+    this.titulo = titulo;
+    this.autor = autor;
+    this.paginas = paginas;
+    this.mostrar = function () {
+        console.log("El titulo del libro es: " + this.titulo);
+        console.log("El autor del libro es: " + this.autor);
+        console.log("La cantidad de paginas del libro es: " + this.paginas);
+    }
 }
 
 
 function ejercicio30() {
+    //CONSOLA
     console.log("Ejercicio Nro 30");
     console.log("30. Crear un programa que simule una lista de tareas (`to-do list`)");
     console.log("utilizando objetos y arrays. Debe permitir agregar tareas, marcar tareas");
     console.log("como completadas y listar las tareas pendientes");
 
+    menuProgramaTareas();
+    const tareas = new ListaDeTareas();
+    const tarea1 = new Tarea("Barrer", "16/08 13:30");
+    const tarea2 = new Tarea("Hacer tarea de labo", "16/08 14:30");
+    const tarea3 = new Tarea("Preparar la cena", "16/08 21:00");
+    tareas.agregarTarea(tarea1);
+    tareas.agregarTarea(tarea2);
+    tareas.agregarTarea(tarea3);
+
+    tareas.listarTareasPendientes();
+    tareas.listarTareasCompletadas();
+    console.log("Asignando la segunda tarea como completada");
+    tareas.marcarTareaCompletada(1);
+    tareas.listarTareasPendientes();
+    tareas.listarTareasCompletadas();
+
+    //HTML
+    const seccionListaDeTareas = document.getElementById(listaDeTareas);
+    seccionListaDeTareas.classList.toggle("menu-desplegable");
+}
+
+function menuProgramaTareas() {
+    console.log("Bienvenido al programa de administracion de tareas.");
+    console.log("Que tarea desea realizar?");
+    console.log("  1. Listar tareas pendientes");
+    console.log("  2. Agregar una tarea");
+    console.log("  3. Marcar tarea como completada");
+    console.log("  4. Mostrar tareas completadas");
+    console.log("  5. Salir del programa");
+}
+
+function ListaDeTareas(){
+    this.tareas = [];
+    this.listarTareasPendientes = function () {
+        console.log("Tareas Pendientes: ");
+        for ( let tarea of this.tareas )
+            if( tarea.completada == false )
+                tarea.mostrar();
+    }
+    this.listarTareasCompletadas = function () {
+        console.log("Tareas Completadas: ");
+        for ( let tarea of this.tareas )
+            if( tarea.completada == true )
+                tarea.mostrar();
+    }
+    this.agregarTarea = function (tarea) {
+        this.tareas.push(tarea);
+    }
+    this.marcarTareaCompletada = function (indiceTarea) {
+        this.tareas[indiceTarea].completada = true;
+    }
+}
+
+function Tarea(titulo, inicio) {
+    this.titulo = titulo;
+    this.inicio = inicio;
+    this.completada = false;
+    this.mostrar = function () {
+        console.log("Tarea:");
+        console.log("  Titulo: " + this.titulo);
+        console.log("  Inicio: " + this.inicio);
+        console.log("  completada: " + this.completada);
+    }
 }
