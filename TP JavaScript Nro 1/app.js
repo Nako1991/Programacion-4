@@ -424,7 +424,7 @@ function Coche(marca, modelo, anio) {
 
 function ejercicio22() {
     console.log("Ejercicio Nro 22");
-    console.log("22. Crear un constructor `Persona` con propiedades `nombre` y `edad`, ");
+    console.log("22. Crear un constructor `Persona` con propiedades `nombre` y `edad`,");
     console.log("y un método `saludar` que imprima un saludo personalizado.");
     
     const persona1 = new Persona("Miguel", 37);
@@ -448,13 +448,14 @@ function ejercicio23() {
     const producto1 = (new Producto("Monitor", 4));
     const producto2 = (new Producto("Teclado", 8));
     const producto3 = (new Producto("Mouse", 11));
+
     carrito.agregarProducto(producto1);
     carrito.agregarProducto(producto2);
     carrito.agregarProducto(producto3);
+
     console.log("Productos en el carrito: ");
-    for ( let producto of carrito.arregloDeProductos ) {
+    for ( let producto of carrito.arregloDeProductos )
         producto.mostrar();
-    }
 }
 
 function Carrito() {
@@ -480,14 +481,40 @@ function ejercicio24() {
     console.log("24. Crear una función `ordenarNumeros` que tome un array de números como");
     console.log("parámetro y retorne un nuevo array con los números ordenados de menor a mayor.");
 
+    const arregloNumerico = [12, 5, 8, 21, 34, 7, 18, 29, 42, 11, 6, 15, 24, 31, 48, 9, 14, 33, 50, 27];
+    const arregloNumericoOrdenado = ordenarArregloNumeros(arregloNumerico);
+    
+    console.log(arregloNumerico);
+    console.log(arregloNumericoOrdenado);
 }
 
+function ordenarArregloNumeros(arregloAOrdenar) {
+    const arregloNumericoOrdenado = arregloAOrdenar.slice();
+    return arregloNumericoOrdenado.sort( (a, b) => a - b );
+}
 
 function ejercicio25() {
-    console.log("Ejercicio Nro 25");
+    console.log("Ejercicio Nro   25");
     console.log("25. Crear una función `eliminarEstudiante` que tome un array de estudiantes");
     console.log("y un nombre, y retorne un nuevo array sin el estudiante con ese nombre");
     
+    const arregloEstudiantes = crearArregloDeEstudiantes();
+    const arregloEstudiantesFiltrado = eliminarEstudiante(arregloEstudiantes, "Ana");
+
+    console.log(arregloEstudiantes);
+    console.log("Eliminando a 'Ana' de la lista de estudiantes");
+    console.log(arregloEstudiantesFiltrado);
+}
+
+function eliminarEstudiante(arregloEstudiantes, nombre) {
+    let arregloEstudiantesNuevo = [];
+    let i = 0;
+    for ( let estudiante of arregloEstudiantes ) {
+        if ( arregloEstudiantes[i].nombre != nombre )
+            arregloEstudiantesNuevo.push(estudiante);
+        i++;
+    }
+    return arregloEstudiantesNuevo;
 }
 
 
@@ -496,6 +523,27 @@ function ejercicio26() {
     console.log("26. Crear una función `totalCarrito` que tome un array de productos");
     console.log("y retorne el precio total de los productos.");
     
+    let carrito = new Carrito();
+    carrito.agregarProducto(new Producto("Harina", 1200));
+    carrito.agregarProducto(new Producto("Aceite", 2400));
+    carrito.agregarProducto(new Producto("Arroz", 1600));
+    carrito.agregarProducto(new Producto("Fideos", 1400));
+    carrito.agregarProducto(new Producto("Azucar", 1000));
+
+    console.log(carrito);
+    console.log("El precio total por los productos es: " + totalCarrito(carrito.arregloDeProductos));
+}
+
+function Producto(nombre, precio, stock) {
+    this.nombre = nombre;
+    this.precio = precio;
+}
+
+function totalCarrito(arregloDeProductos) {
+    let total = 0;
+    for ( let producto of arregloDeProductos )
+        total = total + producto.precio
+    return total;
 }
 
 
@@ -504,6 +552,35 @@ function ejercicio27() {
     console.log("27. Crear una función `crearCalculadora` que retorne un objeto con ");
     console.log("métodos `sumar`, `restar`, `multiplicar` y `dividir`.");
 
+    const calculadora = new Calculadora();
+
+    console.log("Probando la calculadora:");
+    console.log("Sumando 5 + 3 = " + calculadora.sumar(5, 3));
+    console.log("Sumando 7 + (-12) = " + calculadora.sumar(7, -12));
+    console.log("Restando 5 - 3 = " + calculadora.restar(5, 3));
+    console.log("Restando 7 - (-12) = " + calculadora.restar(7, -12));
+    console.log("Multiplicando 5 * 3 = " + calculadora.multiplicar(5, 3));
+    console.log("Multiplicando 5 * 0 = " + calculadora.multiplicar(5, 0));
+    console.log("Dividiendo 5 / 3 = " + calculadora.dividir(5, 3));
+    console.log("Dividiendo 5 / 0 = " + calculadora.dividir(5, 0));
+}
+
+function Calculadora() {
+    this.sumar = function (num1, num2) {
+        return new Number(num1 + num2);
+    }
+    this.restar = function (num1, num2) {
+        return new Number(num1 - num2);
+    }
+    this.multiplicar = function (num1, num2) {
+        return new Number(num1 * num2);
+    }
+    this.dividir = function (num1, num2) {
+        if ( num2 == 0 )
+            return "No se puede dividir por 0.";
+        else
+            return new Number(num1 / num2);
+    }
 }
 
 
@@ -511,7 +588,24 @@ function ejercicio28() {
     console.log("Ejercicio Nro 28");
     console.log("28. Crear una función `crearCuentaBancaria` que retorne un objeto ");
     console.log("con métodos `depositar`, `retirar` y `saldo`");
+    
+    const cuentaBancaria = new CuentaBancaria("Olmos Fernando", 15322.14);
+    console.log(cuentaBancaria.mostrar());
+}
 
+function CuentaBancaria(titular, saldo) {
+    this.titular;
+    this.saldo;
+    this.depositar = function (deposito) {
+        this.saldo = this.saldo + deposito;
+    }
+    this.retirar = function (retiro) {
+        this.saldo = this.saldo - retiro;
+    }
+    this.mostrar = function () {
+        console.log("El titular de la cuenta es: " + this.titular);
+        console.log("El saldo de la cuenta es: " + this.saldo);
+    }
 }
 
 
