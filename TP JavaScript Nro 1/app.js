@@ -659,6 +659,18 @@ function ListaDeTareas(){
             cuadroDeTexto.innerText = stringTareas;
         }
     }
+    this.listarTareasCompletadas = function () {
+        const cuadroDeTexto = document.getElementById("cuadroTexto");
+        if ( this.tareas.length == 0 )
+            cuadroDeTexto.innerText = "No hay tareas en la lista.";
+        else {
+            let stringTareas = "";
+            for ( let tarea of this.tareas )
+                if ( tarea.completada == true )
+                    stringTareas = stringTareas.concat(tarea.toString());
+            cuadroDeTexto.innerText = stringTareas;
+        }
+    }
     this.agregarTarea = function () {
         const titulo = document.getElementById("titulo").value;
         const inicio = document.getElementById("inicio").value;
@@ -667,6 +679,11 @@ function ListaDeTareas(){
         this.tareas.push(tarea);
         document.getElementById("titulo").value = "";
         document.getElementById("inicio").value = "";
+        this.listarTareasPendientes();
+    }
+    this.marcarTareaCompletada = function () {
+        const indice = document.getElementById("indice").value - 1;
+        this.tareas[indice].completada = true;
         this.listarTareasPendientes();
     }
 }
