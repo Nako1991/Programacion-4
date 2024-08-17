@@ -637,6 +637,11 @@ function Libro(titulo, autor, paginas) {
 
 
 function ejercicio30() {
+    console.log("Ejercicio Nro 30");
+    console.log("30. Crear un programa que simule una lista de tareas (`to-do list`)");
+    console.log("utilizando objetos y arrays. Debe permitir agregar tareas, marcar tareas");
+    console.log("como completadas y listar las tareas pendientes");
+
     listaDeTareas.classList.toggle("menu-desplegable");
     window.scrollBy(0, 500);
 
