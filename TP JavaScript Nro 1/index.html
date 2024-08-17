@@ -5,6 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TP JavaScript Nro1</title>
     <style>
+        .contenedor {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .contenido {
+            flex: 1;
+        }
+        .cuadroLateral {
+            flex: 1;
+            margin-left: 0%;
+            padding: 10px;
+            border: 2px solid #7a7a7a;
+            background-color: #f7f6f6;
+            height: calc(50vh);
+            overflow-y: auto;
+        }
+        .button-fila-slim {
+            margin-bottom: 0em;
+        }
         .button-fila {
             margin-bottom: 2em;
         }
@@ -87,17 +107,45 @@
 
     <h2>Proyecto Final: Manejo de Datos</h2>
     <div class="button-fila">
-        <button onclick="ejercicio30()">Ejercicio 30</button>
+        <button onclick="ejercicio30()">Ejercicio 30</button> 
     </div>
 
-    <div id="listaDeTareas" class="menu-desplegable">
-        <h2>Proyecto Final: Manejo de Datos</h2>
-        <h2>Bienvenido al programa de administracion de tareas.</h2>
-        <h2>Que tarea desea realizar?</h2>
-        <p id="Menu: "></p>
-        <button onclick="tareas.listarTareasPendientes()">Tareas Pendientes</button>
-    </div>
+    <div id="listaDeTareas" class="menu-desplegable contenedor">
+        <div class="contenido">
+            <h2>Bienvenido al programa de administracion de tareas.</h2>
+            <h2>Que tarea desea realizar?</h2>
+            <p id="Menu: "></p>
+            <button onclick="tareas.listarTareasPendientes()">Mostrar tareas pendientes</button>
+            
+            <div>
+                <label for="titulo">Título de la tarea: </label>
+                <input type="text" id="titulo" name="titulo">
+            </div>
 
+            <div>
+                <label for="inicio">Fecha y hora de inicio: </label>
+                <input type="text" id="inicio" name="inicio">
+            </div>
+
+            <div class="button-fila-slim">
+                <button onclick="tareas.agregarTarea()">Agregar una tarea</button> </div>
+            
+            <div>
+                <label for="indice">Numero de tarea a completar: </label>
+                <input type="text" id="indice" name="indice">
+            </div>
+
+            <div class="button-fila-slim">
+                <button onclick="tareas.marcarTareaCompletada()">Marcar tarea como completada</button> </div>
+            
+            <div class="button-fila-slim">
+                <button onclick="tareas.listarTareasCompletadas()">Mostrar tareas completadas</button> </div>
+            </div>
+                
+            <div id="cuadroTexto" class="cuadroLateral">
+        </div>
+    </div>
+    
     <script src="app.js"></script>
 </body>
 </html>

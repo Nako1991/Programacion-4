@@ -637,73 +637,52 @@ function Libro(titulo, autor, paginas) {
 
 
 function ejercicio30() {
-    //CONSOLA
-    console.log("Ejercicio Nro 30");
-    console.log("30. Crear un programa que simule una lista de tareas (`to-do list`)");
-    console.log("utilizando objetos y arrays. Debe permitir agregar tareas, marcar tareas");
-    console.log("como completadas y listar las tareas pendientes");
+    listaDeTareas.classList.toggle("menu-desplegable");
+    window.scrollBy(0, 500);
 
-    menuProgramaTareas();
     const tareas = new ListaDeTareas();
-    const tarea1 = new Tarea("Barrer", "16/08 13:30");
-    const tarea2 = new Tarea("Hacer tarea de labo", "16/08 14:30");
-    const tarea3 = new Tarea("Preparar la cena", "16/08 21:00");
-    tareas.agregarTarea(tarea1);
-    tareas.agregarTarea(tarea2);
-    tareas.agregarTarea(tarea3);
-
-    tareas.listarTareasPendientes();
-    tareas.listarTareasCompletadas();
-    console.log("Asignando la segunda tarea como completada");
-    tareas.marcarTareaCompletada(1);
-    tareas.listarTareasPendientes();
-    tareas.listarTareasCompletadas();
-
-    //HTML
-    const seccionListaDeTareas = document.getElementById(listaDeTareas);
-    seccionListaDeTareas.classList.toggle("menu-desplegable");
-}
-
-function menuProgramaTareas() {
-    console.log("Bienvenido al programa de administracion de tareas.");
-    console.log("Que tarea desea realizar?");
-    console.log("  1. Listar tareas pendientes");
-    console.log("  2. Agregar una tarea");
-    console.log("  3. Marcar tarea como completada");
-    console.log("  4. Mostrar tareas completadas");
-    console.log("  5. Salir del programa");
-}
+    window.tareas = tareas;
+}   
 
 function ListaDeTareas(){
     this.tareas = [];
+    this.indice = 0;
     this.listarTareasPendientes = function () {
-        console.log("Tareas Pendientes: ");
-        for ( let tarea of this.tareas )
-            if( tarea.completada == false )
-                tarea.mostrar();
+        const cuadroDeTexto = document.getElementById("cuadroTexto");
+        if ( this.tareas.length == 0 )
+            cuadroDeTexto.innerText = "No hay tareas en la lista.";
+        else {
+            let stringTareas = "";
+            for ( let tarea of this.tareas )
+                if ( tarea.completada == false )
+                    stringTareas = stringTareas.concat(tarea.toString());
+            cuadroDeTexto.innerText = stringTareas;
+        }
     }
-    this.listarTareasCompletadas = function () {
-        console.log("Tareas Completadas: ");
-        for ( let tarea of this.tareas )
-            if( tarea.completada == true )
-                tarea.mostrar();
-    }
-    this.agregarTarea = function (tarea) {
+    this.agregarTarea = function () {
+        const titulo = document.getElementById("titulo").value;
+        const inicio = document.getElementById("inicio").value;
+        const tarea = new Tarea(titulo, inicio, this.indice);
+        this.indice++;
         this.tareas.push(tarea);
-    }
-    this.marcarTareaCompletada = function (indiceTarea) {
-        this.tareas[indiceTarea].completada = true;
+        document.getElementById("titulo").value = "";
+        document.getElementById("inicio").value = "";
+        this.listarTareasPendientes();
     }
 }
 
-function Tarea(titulo, inicio) {
+function Tarea(titulo, inicio, indice) {
     this.titulo = titulo;
     this.inicio = inicio;
+    this.indice = indice;
     this.completada = false;
     this.mostrar = function () {
         console.log("Tarea:");
         console.log("  Titulo: " + this.titulo);
         console.log("  Inicio: " + this.inicio);
         console.log("  completada: " + this.completada);
+    }
+    this.toString = function () {
+        return  `Tarea: ${this.indice + 1} \n  ${this.titulo}\n  ${this.inicio}\n`;
     }
 }
