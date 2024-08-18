@@ -89,10 +89,59 @@ function ejercicio4() {
     const valorBuscado = 18;
     const indiceEncontrado = buscarValorNumerico(arregloNumerico, valorBuscado);
 
+    resolucionEjercicio4 = "Arreglo numerico: " + arregloNumerico.toString() + "\n";
+    resolucionEjercicio4 += "El elemento buscado es: " + valorBuscado + "\n";
+    if ( indiceEncontrado != -1 )
+        resolucionEjercicio4 += "El indice del elemento buscado es de: " + indiceEncontrado + "\n";
+    else
+        resolucionEjercicio4 += "No se encontro el elemento dentro del array.\n";
 
+    document.getElementById("resolucionEjercicio4").innerText = resolucionEjercicio4;
 }
 
 function buscarValorNumerico(arregloNumerico, valorBuscado) {
-    //const siSeEncuentras = arregloNumerico.find( numero => numero == );
+    const indiceEncontrado = arregloNumerico.findIndex( numero => numero == valorBuscado );
     return indiceEncontrado;
+}
+
+function ejercicio5() {
+    desplegar(5);
+
+    let resolucionEjercicio5 = "";
+    const arregloNumerico = [12, 5, 8, 21, 34, 7, 18, 29, 42, 11, 6, 15, 24, 31, 48, 9, 14, 33, 50, 27];
+    const arregloNumericoPares = filtrarParesArregloNumerico(arregloNumerico);
+    const arregloNumericoImpares = filtrarImparesArregloNumerico(arregloNumerico);
+
+    resolucionEjercicio5 = "Arreglo numerico: " + arregloNumerico.toString() + "\n";
+    resolucionEjercicio5 += "Arreglo numerico pares: " + arregloNumericoPares.toString() + "\n";
+    resolucionEjercicio5 += "Arreglo numerico impares: " + arregloNumericoImpares.toString() + "\n";
+
+    document.getElementById("resolucionEjercicio5").innerText = resolucionEjercicio5;
+}
+
+function filtrarParesArregloNumerico(arregloNumerico) {
+    return arregloNumerico.filter( numero => numero % 2 === 0 );
+}
+
+function filtrarImparesArregloNumerico(arregloNumerico) {
+    return arregloNumerico.filter( numero => numero % 2 === 1 );
+}
+
+function ejercicio6() {
+    desplegar(6);
+
+    let resolucionEjercicio6 = "";
+    const arregloNumerico = [12, 12, 8, 21, 7, 7, 7, 29, 42, 11, 15, 15, 24, 31, 31, 9, 14, 33, 50, 50];
+    const arregloNumericoSinDuplicados = filtrarDuplicadosArregloNumerico(arregloNumerico);
+
+    resolucionEjercicio6 = "Arreglo numerico: " + arregloNumerico.toString() + "\n";
+    resolucionEjercicio6 += "Arreglo numerico sin duplicados: " + arregloNumericoSinDuplicados.toString() + "\n";
+
+    document.getElementById("resolucionEjercicio6").innerText = resolucionEjercicio6;
+}
+
+function filtrarDuplicadosArregloNumerico(arregloNumerico) {
+    let arregloNumericoSinDuplicados = [];
+    
+    return arregloNumericoSinDuplicados;
 }
