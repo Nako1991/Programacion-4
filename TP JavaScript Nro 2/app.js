@@ -1,12 +1,12 @@
 "use strict"
-function desplegar(numeroDeEjercicio) {
+function desplegarResolucion(numeroDeEjercicio) {
     let stringEjercicio = "ejercicio" + numeroDeEjercicio;
     const desplegar = document.getElementById(stringEjercicio);
     desplegar.classList.toggle("menu-desplegable");
 }
 
 function ejercicio1() {
-    desplegar(1);
+    desplegarResolucion(1);
 
     const arregloNumerico = [12, 5, 8, 21, 34, 7, 18, 29, 42, 11, 6, 15, 24, 31, 48, 9, 14, 33, 50, 27];
     
@@ -26,7 +26,7 @@ function sumarElementosArreglo(arregloNumerico) {
 }
 
 function ejercicio2() {
-    desplegar(2);
+    desplegarResolucion(2);
     
     const arregloNumerico = [12, 5, 8, 21, 34, 7, 18, 29, 42, 11, 6, 15, 24, 31, 48, 9, 14, 33, 50, 27];
     
@@ -50,7 +50,7 @@ function calcularPromedioArreglo(arregloNumerico) {
 }
 
 function ejercicio3() {
-    desplegar(3);
+    desplegarResolucion(3);
 
     const arregloNumerico = [12, 5, 8, 21, 34, 7, 18, 29, 42, 11, 6, 15, 24, 31, 48, 9, 14, 33, 50, 27];
     const maximo = encontrarMaximoNumero(arregloNumerico);
@@ -74,7 +74,7 @@ function encontrarMinimoNumero(arregloNumerico) {
 }
 
 function ejercicio4() {
-    desplegar(4);
+    desplegarResolucion(4);
 
     const arregloNumerico = [12, 5, 8, 21, 34, 7, 18, 29, 42, 11, 6, 15, 24, 31, 48, 9, 14, 33, 50, 27];
     const valorBuscado = 18;
@@ -96,7 +96,7 @@ function buscarValorNumerico(arregloNumerico, valorBuscado) {
 }
 
 function ejercicio5() {
-    desplegar(5);
+    desplegarResolucion(5);
 
     const arregloNumerico = [12, 5, 8, 21, 34, 7, 18, 29, 42, 11, 6, 15, 24, 31, 48, 9, 14, 33, 50, 27];
     const arregloNumericoPares = filtrarParesArregloNumerico(arregloNumerico);
@@ -118,7 +118,7 @@ function filtrarImparesArregloNumerico(arregloNumerico) {
 }
 
 function ejercicio6() {
-    desplegar(6);
+    desplegarResolucion(6);
 
     const arregloNumerico = [12, 12, 8, 21, 7, 7, 7, 29, 42, 11, 15, 15, 24, 31, 31, 9, 14, 33, 50, 50];
     const arregloNumericoSinDuplicados = filtrarDuplicadosArregloNumerico(arregloNumerico);
@@ -135,7 +135,7 @@ function filtrarDuplicadosArregloNumerico(arregloNumerico) {
 }
 
 function ejercicio7() {
-    desplegar(7);
+    desplegarResolucion(7);
 
     const arregloNumerico = [12, 5, 8, 21, 34, 7, 18, 29, 42, 11, 6, 15, 24, 31, 48, 9, 14, 33, 50, 27];
     const arregloNumericoOrdenado = ordenarArregloNumerico(arregloNumerico);
@@ -152,7 +152,7 @@ function ordenarArregloNumerico(arregloNumerico) {
 }
 
 function ejercicio8() {
-    desplegar(8);
+    desplegarResolucion(8);
 
     const arregloNumerico = [12, 12, 8, 21, 7, 7, 7, 29, 42, 11, 15, 15, 24, 31, 31, 9, 14, 33, 50, 50];
     const arregloNumericoSinEliminados = eliminarValorArregloNumerico(arregloNumerico, 7);
@@ -176,7 +176,7 @@ function eliminarValorArregloNumerico(arregloNumerico, numeroAEliminar) {
 }
 
 function ejercicio9() {
-    desplegar(9);
+    desplegarResolucion(9);
 
     const arregloNumerico1 = [12, 6, 8, 21, 7, 9, 14, 33, 50, 50];
     const arregloNumerico2 = [12, 5, 8, 21, 34, 7, 18, 29, 42, 11];
@@ -191,12 +191,12 @@ function ejercicio9() {
 }
 
 function ejercicio10() {
-    desplegar(10);
+    desplegarResolucion(10);
 
     const listaDeCompras = new ListaDeCompras();
     const producto1 = new Producto("Arroz", 5);
     listaDeCompras.agregarProducto(producto1);
-     
+
     console.log(listaDeCompras);
     console.log(producto1);
     listaDeCompras.mostrarLista();
@@ -218,7 +218,8 @@ function Producto(nombre, stock) {
     this.nombre = nombre;
     this.stock = stock;
     this.mostrar = function () {
-        console.log(this.nombre);
-        console.log(this.stock);
+        console.log("Producto: ");
+        console.log("  Nombre: " + this.nombre);
+        console.log("  Stock: " + this.stock);
     }
 }
