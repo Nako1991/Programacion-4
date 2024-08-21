@@ -11,5 +11,8 @@ function switchBackgroundColor(color) {
         const colorRandom = `rgb(${r}, ${g}, ${b})`;
         body.style.backgroundColor = colorRandom;
     }
+
+
+    console.log();
 }
 
