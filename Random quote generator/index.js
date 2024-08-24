@@ -38,20 +38,42 @@ function generateRandomQuote() {
         "Cree que puedes y estarás a mitad de camino. - Theodore Roosevelt"
     ];
 
-    let frasesUsadas = new Set(JSON.parse(localStorage.getItem("frasesUsadas")));
+    let frasesUsadas = cargarFrasesUsadas();
 
+    let fraseAleatoria = generarFraseAleatoria(frasesFamosas, frasesUsadas);
+    frasesUsadas.add(fraseAleatoria);
+    frasesUsadas = limpiarFrasesUsadasAlUsarTodas(frasesFamosas, frasesUsadas);
+    guardarFrasesUsadas(frasesUsadas);
+
+    return fraseAleatoria;
+}
+
+function generarFraseAleatoria(frasesFamosas, frasesUsadas) {
     let fraseAleatoria;
     do {
         fraseAleatoria = frasesFamosas[ Math.floor( Math.random() * frasesFamosas.length ) ];
         console.log(fraseAleatoria);
     } while ( frasesUsadas.has(fraseAleatoria) );
+    return fraseAleatoria;
+}
 
-    frasesUsadas.add(fraseAleatoria);
+function limpiarFrasesUsadasAlUsarTodas(frasesFamosas, frasesUsadas) {
     if ( frasesUsadas.size >= frasesFamosas.length )
-        frasesUsadas.clear();
-    
+        return new Set();
+    return frasesUsadas;
+}
+
+function cargarFrasesUsadas() {
+    try {
+        let frasesUsadas = new Set(JSON.parse(localStorage.getItem("frasesUsadas")));
+        return new Set(frasesUsadas);
+    } catch (e) {
+        console.error("Error al cargar frasesUsadas desde localStorage")
+        return new Set();
+    }
+}
+
+function guardarFrasesUsadas(frasesUsadas) {
     localStorage.setItem("frasesUsadas", JSON.stringify([...frasesUsadas]));
     console.log(frasesUsadas);
-
-    return fraseAleatoria;
 }
