@@ -74,6 +74,10 @@ function cargarFrasesUsadas() {
 }
 
 function guardarFrasesUsadas(frasesUsadas) {
-    localStorage.setItem("frasesUsadas", JSON.stringify([...frasesUsadas]));
-    console.log(frasesUsadas);
+    try {
+        localStorage.setItem("frasesUsadas", JSON.stringify([...frasesUsadas]));
+        console.log(frasesUsadas);
+    } catch (e) {
+        console.error("Error al guardar frases usadas en localStorage:", e);
+    }
 }
