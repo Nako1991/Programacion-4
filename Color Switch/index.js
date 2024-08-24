@@ -12,4 +12,3 @@ function switchBackgroundColor(color) {
         body.style.backgroundColor = colorRandom;
     }
 }
-
