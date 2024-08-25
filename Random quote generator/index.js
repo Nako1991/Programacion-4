@@ -5,7 +5,19 @@ function quoteGenerator() {
 }
 
 function generateRandomQuote() {
-    const frasesFamosas = [
+    const frasesFamosas = cargarFrasesFamosas();
+    let frasesUsadas = cargarFrasesUsadas();
+    let fraseAleatoria = generarFraseAleatoria(frasesFamosas, frasesUsadas);
+
+    frasesUsadas.add(fraseAleatoria);
+    frasesUsadas = limpiarFrasesUsadasAlUsarTodas(frasesFamosas, frasesUsadas);
+    guardarFrasesUsadas(frasesUsadas);
+
+    return fraseAleatoria;
+}
+
+function cargarFrasesFamosas() {
+    return [
         "La vida es lo que sucede mientras estás ocupado haciendo otros planes. - John Lennon",
         "El único modo de hacer un gran trabajo es amar lo que haces. - Steve Jobs",
         "El éxito es aprender a ir de fracaso en fracaso sin desesperarse. - Winston Churchill",
@@ -37,15 +49,6 @@ function generateRandomQuote() {
         "La calidad no es un acto, es un hábito. - Aristóteles",
         "Cree que puedes y estarás a mitad de camino. - Theodore Roosevelt"
     ];
-
-    let frasesUsadas = cargarFrasesUsadas();
-
-    let fraseAleatoria = generarFraseAleatoria(frasesFamosas, frasesUsadas);
-    frasesUsadas.add(fraseAleatoria);
-    frasesUsadas = limpiarFrasesUsadasAlUsarTodas(frasesFamosas, frasesUsadas);
-    guardarFrasesUsadas(frasesUsadas);
-
-    return fraseAleatoria;
 }
 
 function generarFraseAleatoria(frasesFamosas, frasesUsadas) {
