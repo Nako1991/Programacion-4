@@ -7,16 +7,18 @@
     <style>
         .time {
             border: 3ch;
+            font-size: 3ch;
         }
     </style>
 </head>
 <body>
-    
+
     <h1>Stopwatch</h1>
-    <label id="time">00:00</label>
-    <button onclick="start()">Start</button>
-    <button onclick="stop()">Stop</button>
-    <button onclick="refresh()">Refresh</button>
+    <label id="time" class="time">00:00:00</label>
+    <br>
+    <button onclick="stopwatch.start()">Start</button>
+    <button onclick="stopwatch.stop()">Stop</button>
+    <button onclick="stopwatch.refresh()">Refresh</button>
 
     <script src="index.js"></script>
 </body>
