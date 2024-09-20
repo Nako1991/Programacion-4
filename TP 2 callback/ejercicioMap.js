@@ -1,3 +1,6 @@
+"use strict";
+import { editResults, toggleResult } from "./results.js";
+
 export function ejercicioMap() {
     let resultado = "";
     
@@ -45,7 +48,6 @@ export function ejercicioMap() {
     toggleResult("Map");
 }
 
-
 function mapToString(map) {
     let mapString = "Map:";
     map.forEach( (valor, clave) => {
@@ -53,4 +55,3 @@ function mapToString(map) {
     });
     return mapString;
 }
-
